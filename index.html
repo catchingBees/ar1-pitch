@@ -116,17 +116,14 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
 .nb:hover::after { transform: translateX(0); }
 
 /* ── SPECIFIC SLIDES ── */
-/* S1 Cover */
 #s1 .right { display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
 #s1 .tech-label { position: absolute; bottom: var(--pad); left: var(--pad); }
 #heroSvg { max-width: 100%; max-height: 100%; }
 
-/* S2 Problem */
 #s2 .abstract-diagram { width: 100%; height: 100%; max-height: 500px; }
 .line-path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 3s forwards cubic-bezier(0.16, 1, 0.3, 1); }
 @keyframes drawLine { to { stroke-dashoffset: 0; } }
 
-/* S3 Sim */
 #s3 { display: flex; flex-direction: column; }
 #s3 .hud-bar { padding: var(--pad); display: flex; justify-content: space-between; align-items: flex-end; flex-shrink: 0; flex-wrap: wrap; gap: 24px; }
 .hud-btn { 
@@ -140,8 +137,8 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
 .leg-item { display: flex; align-items: center; gap: 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
 .leg-dot { width: 6px; height: 6px; }
 
-/* Grid Modules */
-.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); flex: 1; min-height: 0; }
+/* Updated Team Grid for 2 Members */
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; flex: 1; min-height: 0; }
 .team-avatar { 
   width: 100%; height: 50vh; max-height: 480px; 
   border: 1px solid var(--line); margin-bottom: 24px; 
@@ -150,7 +147,7 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
   transition: background 0.4s ease, color 0.4s ease; 
 }
 .team-avatar:hover { background: var(--fg); color: var(--bg); }
-.team-avatar svg { width: 45%; height: auto; stroke: currentColor; }
+.team-avatar svg { width: 35%; height: auto; stroke: currentColor; }
 .team-glyph { 
   width: 100%; height: 50vh; max-height: 480px; 
   border: 1px solid var(--line); margin-bottom: 24px; 
@@ -170,36 +167,24 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
 .phase-dot.active { background: var(--fg); }
 .phase-dot.accent { background: var(--accent); border-color: var(--accent); }
 
-/* S7 Ask */
 .data-row { display: flex; align-items: center; padding: 24px 0; }
 .data-bar-wrap { flex: 1; height: 1px; background: var(--line); margin: 0 24px; position: relative; }
 .data-bar { position: absolute; left: 0; top: -1px; height: 3px; background: var(--accent); }
 
-/* S8 Close */
 .contact-item { margin-bottom: 24px; }
 .contact-item:last-child { margin-bottom: 0; }
 
-/* ── RESPONSIVE DESIGN FOR MOBILE & TABLET ── */
 @media (max-width: 850px) {
   .slide { display: block; overflow-y: auto; overflow-x: hidden; height: 100vh; }
   .grid-2, .team-grid, .num-grid, .phase-grid { display: flex; flex-direction: column; height: auto; }
-  
   .panel, .num-col, .phase-col { min-height: auto; padding: 40px var(--pad); }
   .br { border-right: none; border-bottom: 1px solid var(--line); }
-  
-  /* Space for fixed nav on bottom elements */
   .panel:last-child, .num-col:last-child, .phase-col:last-child { padding-bottom: 120px; }
-  
   .team-avatar, .team-glyph { height: 300px; }
-  
-  /* Reduce enormous text slightly more on narrow screens */
   .t-mega { font-size: clamp(48px, 12vw, 100px); }
-  
-  /* Adjust SVG constraints for vertical flow */
   #heroSvg, .abstract-diagram { max-width: 80%; height: auto; margin: 0 auto; display: block; }
 }
 
-/* Touch devices: disable custom cursor */
 @media (hover: none) and (pointer: coarse) {
   .cursor { display: none !important; }
   * { cursor: auto !important; }
@@ -226,20 +211,15 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
       </div>
     </div>
     <div class="panel right">
-      <!-- Minimalist Technical Reticle -->
       <svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" id="heroSvg">
         <circle cx="300" cy="300" r="280" stroke="var(--line)" stroke-width="1"/>
         <circle cx="300" cy="300" r="200" stroke="var(--line)" stroke-width="1"/>
         <circle cx="300" cy="300" r="120" stroke="var(--fg)" stroke-width="1" stroke-dasharray="2 4"/>
         <circle cx="300" cy="300" r="8" fill="var(--accent)"/>
-        
-        <!-- Crosshairs -->
         <line x1="300" y1="0" x2="300" y2="40" stroke="var(--fg)" stroke-width="1"/>
         <line x1="300" y1="560" x2="300" y2="600" stroke="var(--fg)" stroke-width="1"/>
         <line x1="0" y1="300" x2="40" y2="300" stroke="var(--fg)" stroke-width="1"/>
         <line x1="560" y1="300" x2="600" y2="300" stroke="var(--fg)" stroke-width="1"/>
-        
-        <!-- Orbiting elements -->
         <g id="orbitGroup">
           <circle cx="300" cy="20" r="4" fill="var(--fg)"/>
           <path d="M 441.4 158.6 L 455.5 144.5" stroke="var(--accent)" stroke-width="2"/>
@@ -261,31 +241,21 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
       <p class="t-body">Both hands occupied. No hand left to act. No eyes left to navigate.</p>
     </div>
     <div class="panel" style="justify-content: center; align-items: center;">
-      <!-- Abstracted brutalist diagram -->
       <svg viewBox="0 0 500 450" class="abstract-diagram" xmlns="http://www.w3.org/2000/svg">
-        <!-- Floor / Wall structural lines -->
         <line x1="50" y1="400" x2="450" y2="400" stroke="var(--line)" stroke-width="1"/>
         <line x1="400" y1="50" x2="400" y2="400" stroke="var(--line)" stroke-width="2"/>
         <text x="390" y="60" fill="var(--gray)" font-family="var(--font)" font-size="10" letter-spacing="0.1em" text-anchor="end">HAZARD ROOM : DEEP SMOKE AND HEAT</text>
-        
-        <!-- Abstract Operator -->
         <rect x="220" y="200" width="60" height="120" fill="none" stroke="var(--bg)" stroke-width="2"/>
         <rect x="235" y="160" width="30" height="30" fill="var(--bg)"/>
-        
-        <!-- Left Arm -> Wall -->
         <line x1="280" y1="220" x2="400" y2="220" stroke="var(--bg)" stroke-width="4" class="line-path"/>
         <circle cx="400" cy="220" r="6" fill="var(--bg)"/>
-        <line x1="400" y1="220" x2="440" y2="220" stroke="var(--gray)" stroke-width="1"/>
         <text x="445" y="223" fill="var(--gray)" font-family="var(--font)" font-size="10" letter-spacing="0.1em">WALL AS NAVIGATION</text>
-
-        <!-- Right Arm -> Camera (Pointing away from wall) -->
         <line x1="220" y1="260" x2="130" y2="290" stroke="var(--bg)" stroke-width="4" class="line-path"/>
         <rect x="90" y="280" width="40" height="20" fill="none" stroke="var(--bg)" stroke-width="2"/>
         <circle cx="90" cy="290" r="4" fill="var(--accent)"/>
         <line x1="90" y1="290" x2="10" y2="290" stroke="var(--accent)" stroke-width="1" stroke-dasharray="2 2"/>
         <text x="45" y="285" fill="var(--accent)" font-family="var(--font)" font-size="10" letter-spacing="0.1em" text-anchor="middle">THERMAL</text>
       </svg>
-
       <div class="t-cap" style="margin-top: 32px; text-align: center; border-top: 1px solid var(--line); padding-top: 24px; width: 100%;">
         CONTEXT: A FIREFIGHTER USING THERMAL IMAGER TO LOCATE VICTIM
       </div>
@@ -322,38 +292,10 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
     <h2 class="t-h2 outline">FROM INTERVIEW<br>TO <span class="accent">DEPLOYMENT.</span></h2>
   </div>
   <div class="phase-grid">
-    <div class="phase-col br">
-      <div class="phase-dot active"></div>
-      <div>
-        <div class="t-cap" style="margin-bottom:12px;">Phase 01</div>
-        <div class="t-body" style="font-weight:500;">Operator Input</div>
-        <div class="t-cap" style="margin-top:12px; color:var(--fg);">Complete</div>
-      </div>
-    </div>
-    <div class="phase-col br">
-      <div class="phase-dot active"></div>
-      <div>
-        <div class="t-cap" style="margin-bottom:12px;">Phase 02</div>
-        <div class="t-body" style="font-weight:500;">POC Logic Simulation</div>
-        <div class="t-cap" style="margin-top:12px; color:var(--fg);">Complete</div>
-      </div>
-    </div>
-    <div class="phase-col br">
-      <div class="phase-dot accent"></div>
-      <div>
-        <div class="t-cap" style="margin-bottom:12px; color:var(--accent);">Phase 03</div>
-        <div class="t-body" style="font-weight:500;">Prototype</div>
-        <div class="t-cap" style="margin-top:12px; color:var(--accent);">In Progress</div>
-      </div>
-    </div>
-    <div class="phase-col br">
-      <div class="phase-dot accent"></div>
-      <div>
-        <div class="t-cap" style="margin-bottom:12px; color:var(--accent);">Phase 04</div>
-        <div class="t-body" style="font-weight:500;">Pre-Seed</div>
-        <div class="t-cap" style="margin-top:12px; color:var(--accent);">In Progress</div>
-      </div>
-    </div>
+    <div class="phase-col br"><div class="phase-dot active"></div><div><div class="t-cap" style="margin-bottom:12px;">Phase 01</div><div class="t-body" style="font-weight:500;">Operator Input</div><div class="t-cap" style="margin-top:12px; color:var(--fg);">Complete</div></div></div>
+    <div class="phase-col br"><div class="phase-dot active"></div><div><div class="t-cap" style="margin-bottom:12px;">Phase 02</div><div class="t-body" style="font-weight:500;">POC Logic Simulation</div><div class="t-cap" style="margin-top:12px; color:var(--fg);">Complete</div></div></div>
+    <div class="phase-col br"><div class="phase-dot accent"></div><div><div class="t-cap" style="margin-bottom:12px; color:var(--accent);">Phase 03</div><div class="t-body" style="font-weight:500;">Prototype</div><div class="t-cap" style="margin-top:12px; color:var(--accent);">In Progress</div></div></div>
+    <div class="phase-col br"><div class="phase-dot accent"></div><div><div class="t-cap" style="margin-bottom:12px; color:var(--accent);">Phase 04</div><div class="t-body" style="font-weight:500;">Pre-Seed</div><div class="t-cap" style="margin-top:12px; color:var(--accent);">In Progress</div></div></div>
     <div class="phase-col">
       <div class="phase-dot"></div>
       <div>
@@ -372,25 +314,13 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
     <h2 class="t-mega">1.1M US FIREFIGHTERS.<br><span class="accent outline">0 SOLUTIONS.</span></h2>
   </div>
   <div class="num-grid">
-    <div class="num-col br">
-      <div class="t-cap" style="margin-bottom:16px;">Total Addressable (2030)</div>
-      <div class="t-mega outline" style="font-size:clamp(40px,7vw,120px);">8.4B</div>
-      <div class="t-body" style="margin-top:24px;">Global thermal imaging, first responder, and defense AR equipment.</div>
-    </div>
-    <div class="num-col br">
-      <div class="t-cap" style="margin-bottom:16px;">Serviceable Addressable</div>
-      <div class="t-mega" style="font-size:clamp(40px,7vw,120px);">1.8B</div>
-      <div class="t-body" style="margin-top:24px;">US & Allied public safety sensor fusion and smart PPE procurement.</div>
-    </div>
-    <div class="num-col">
-      <div class="t-cap" style="margin-bottom:16px; color:var(--accent);">Obtainable (Yr 8)</div>
-      <div class="t-mega accent" style="font-size:clamp(40px,7vw,120px);">85M</div>
-      <div class="t-body" style="margin-top:24px;">Bottom-up target: Municipal fire departments and heavy industrial conversions.</div>
-    </div>
+    <div class="num-col br"><div class="t-cap" style="margin-bottom:16px;">Total Addressable (2030)</div><div class="t-mega outline" style="font-size:clamp(40px,7vw,120px);">8.4B</div><div class="t-body" style="margin-top:24px;">Global thermal imaging, first responder, and defense AR equipment.</div></div>
+    <div class="num-col br"><div class="t-cap" style="margin-bottom:16px;">Serviceable Addressable</div><div class="t-mega" style="font-size:clamp(40px,7vw,120px);">1.8B</div><div class="t-body" style="margin-top:24px;">US & Allied public safety sensor fusion and smart PPE procurement.</div></div>
+    <div class="num-col"><div class="t-cap" style="margin-bottom:16px; color:var(--accent);">Obtainable (Yr 8)</div><div class="t-mega accent" style="font-size:clamp(40px,7vw,120px);">85M</div><div class="t-body" style="margin-top:24px;">Bottom-up target: Municipal fire departments and heavy industrial conversions.</div></div>
   </div>
 </section>
 
-<!-- 06 TEAM -->
+<!-- 06 TEAM (Xiangyu Removed) -->
 <section class="slide" id="s6">
   <div class="panel bb" style="flex: 0 0 auto;">
     <div class="t-cap" style="margin-bottom: 24px;">06 / Team</div>
@@ -399,16 +329,11 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
   <div class="team-grid">
     <div class="panel br">
       <div class="team-avatar">
-        <!-- Human Avatar: Research/Visor -->
         <svg viewBox="0 0 120 120" fill="none" stroke-width="2">
-          <!-- Shoulders -->
           <path d="M25 120 v-20 c0-15 15-25 35-25 s35 10 35 25 v20" stroke="currentColor"/>
-          <!-- Head -->
           <rect x="40" y="20" width="40" height="55" rx="20" stroke="currentColor"/>
-          <!-- AR Visor / Research Aesthetic -->
           <rect x="35" y="38" width="50" height="14" rx="2" fill="var(--bg)" stroke="currentColor"/>
           <line x1="45" y1="45" x2="75" y2="45" stroke="currentColor" stroke-dasharray="2 4"/>
-          <!-- Crosshair accent -->
           <line x1="60" y1="5" x2="60" y2="10" stroke="currentColor"/>
         </svg>
       </div>
@@ -416,28 +341,6 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
         <div class="t-body" style="font-weight: 500;">Mahfuz Belal</div>
         <div class="t-cap" style="margin: 8px 0;">FOUNDER / RESEARCH</div>
         <a href="https://www.linkedin.com/in/mahfuzbelal" target="_blank" class="t-cap" style="color:var(--accent); text-decoration:none;">LinkedIn ↗</a>
-      </div>
-    </div>
-    <div class="panel br">
-      <div class="team-avatar">
-        <!-- Human Avatar: CTO/Tech -->
-        <svg viewBox="0 0 120 120" fill="none" stroke-width="2">
-          <!-- Shoulders -->
-          <path d="M25 120 v-20 c0-15 15-25 35-25 s35 10 35 25 v20" stroke="currentColor"/>
-          <!-- Head -->
-          <rect x="40" y="20" width="40" height="55" rx="20" stroke="currentColor"/>
-          <!-- Tech HUD / Monocle -->
-          <circle cx="65" cy="45" r="8" stroke="currentColor"/>
-          <line x1="73" y1="45" x2="88" y2="45" stroke="currentColor"/>
-          <line x1="88" y1="45" x2="88" y2="70" stroke="currentColor"/>
-          <circle cx="88" cy="70" r="3" fill="currentColor" stroke="none"/>
-          <line x1="48" y1="45" x2="52" y2="45" stroke="currentColor"/>
-        </svg>
-      </div>
-      <div style="margin-top: auto;">
-        <div class="t-body" style="font-weight: 500;">Xiangyu Guan</div>
-        <div class="t-cap" style="margin: 8px 0;">CTO <span style="text-transform:none; color:var(--gray);">*Prospective / Joining post-funding</span></div>
-        <a href="https://www.linkedin.com/in/xiangyu-guan-a871181a0/" target="_blank" class="t-cap" style="color:var(--accent); text-decoration:none;">LinkedIn ↗</a>
       </div>
     </div>
     <div class="panel">
@@ -454,37 +357,13 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
 <!-- 07 ASK -->
 <section class="slide dark-mode" id="s7">
   <div class="grid-2">
-    <div class="panel br">
-      <div class="t-cap">07 / The Ask</div>
-      <div style="margin: auto 0;">
-        <h2 class="t-mega"><span class="accent">1.5M</span><br>PRE-SEED</h2>
-      </div>
-      <p class="t-body">Funding the leap from conceptual interface validation to physical hardware prototyping and live-fire trials.</p>
-    </div>
+    <div class="panel br"><div class="t-cap">07 / The Ask</div><div style="margin: auto 0;"><h2 class="t-mega"><span class="accent">1.5M</span><br>PRE-SEED</h2></div><p class="t-body">Funding the leap from conceptual interface validation to physical hardware prototyping and live-fire trials.</p></div>
     <div class="panel" style="justify-content: center;">
       <div class="t-cap" style="margin-bottom: 40px;">Capital Allocation</div>
-      
-      <div class="data-row">
-        <div class="t-cap" style="width: 100px;">Hardware R&D</div>
-        <div class="data-bar-wrap"><div class="data-bar" style="width: 40%;"></div></div>
-        <div class="t-cap" style="width: 30px; text-align:right;">40%</div>
-      </div>
-      <div class="data-row">
-        <div class="t-cap" style="width: 100px;">Engineering</div>
-        <div class="data-bar-wrap"><div class="data-bar" style="width: 25%;"></div></div>
-        <div class="t-cap" style="width: 30px; text-align:right;">25%</div>
-      </div>
-      <div class="data-row">
-        <div class="t-cap" style="width: 100px;">Field Trials</div>
-        <div class="data-bar-wrap"><div class="data-bar" style="width: 20%;"></div></div>
-        <div class="t-cap" style="width: 30px; text-align:right;">20%</div>
-      </div>
-      <div class="data-row">
-        <div class="t-cap" style="width: 100px;">Ops & IP</div>
-        <div class="data-bar-wrap"><div class="data-bar" style="width: 15%;"></div></div>
-        <div class="t-cap" style="width: 30px; text-align:right;">15%</div>
-      </div>
-
+      <div class="data-row"><div class="t-cap" style="width: 100px;">Hardware R&D</div><div class="data-bar-wrap"><div class="data-bar" style="width: 40%;"></div></div><div class="t-cap" style="width: 30px; text-align:right;">40%</div></div>
+      <div class="data-row"><div class="t-cap" style="width: 100px;">Engineering</div><div class="data-bar-wrap"><div class="data-bar" style="width: 25%;"></div></div><div class="t-cap" style="width: 30px; text-align:right;">25%</div></div>
+      <div class="data-row"><div class="t-cap" style="width: 100px;">Field Trials</div><div class="data-bar-wrap"><div class="data-bar" style="width: 20%;"></div></div><div class="t-cap" style="width: 30px; text-align:right;">20%</div></div>
+      <div class="data-row"><div class="t-cap" style="width: 100px;">Ops & IP</div><div class="data-bar-wrap"><div class="data-bar" style="width: 15%;"></div></div><div class="t-cap" style="width: 30px; text-align:right;">15%</div></div>
       <div class="bt" style="margin-top: 60px; padding-top: 24px; display: flex; justify-content: space-between;">
         <div class="t-cap">Instrument<br><span style="color:var(--bg); font-size:14px; display:block; margin-top:8px;">SAFE</span></div>
         <div class="t-cap">Target<br><span style="color:var(--bg); font-size:14px; display:block; margin-top:8px;">2026</span></div>
@@ -496,22 +375,11 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
 <!-- 08 CLOSE -->
 <section class="slide" id="s8">
   <div class="grid-2">
-    <div class="panel br">
-      <div style="margin: auto 0;">
-        <h2 class="t-mega outline">IGNIS<br><span class="accent">GAZE.</span></h2>
-      </div>
-      <p class="t-cap">Confidential — Do Not Distribute<br>For Accredited Investors Only</p>
-    </div>
+    <div class="panel br"><div style="margin: auto 0;"><h2 class="t-mega outline">IGNIS<br><span class="accent">GAZE.</span></h2></div><p class="t-cap">Confidential — Do Not Distribute<br>For Accredited Investors Only</p></div>
     <div class="panel">
       <div style="margin: auto 0;">
-        <div class="contact-item">
-          <div class="t-cap" style="margin-bottom:8px;">Email</div>
-          <div class="t-h2" style="font-size: clamp(20px, 3vw, 40px); letter-spacing:-0.02em; text-transform:none;">research@ignisgaze.com</div>
-        </div>
-        <div class="contact-item">
-          <div class="t-cap" style="margin-bottom:8px;">Web</div>
-          <div class="t-h2" style="font-size: clamp(20px, 3vw, 40px); letter-spacing:-0.02em; text-transform:none;">www.ignisgaze.com</div>
-        </div>
+        <div class="contact-item"><div class="t-cap" style="margin-bottom:8px;">Email</div><div class="t-h2" style="font-size: clamp(20px, 3vw, 40px); letter-spacing:-0.02em; text-transform:none;">research@ignisgaze.com</div></div>
+        <div class="contact-item"><div class="t-cap" style="margin-bottom:8px;">Web</div><div class="t-h2" style="font-size: clamp(20px, 3vw, 40px); letter-spacing:-0.02em; text-transform:none;">www.ignisgaze.com</div></div>
       </div>
     </div>
   </div>
@@ -526,14 +394,12 @@ a:hover ~ .cursor, button:hover ~ .cursor { width: 40px; height: 40px; backgroun
 </nav>
 
 <script>
-/* ── CUSTOM CURSOR ── */
 const cursor = document.getElementById('cursor');
 document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
 
-/* ── NAVIGATION ── */
 const N = 8, slides = document.querySelectorAll('.slide');
 let cur = 0;
 const nc = document.getElementById('nc'), pb = document.getElementById('prog'), nav = document.querySelector('.nav');
@@ -544,8 +410,6 @@ function go(n) {
   slides[cur].classList.add('on');
   nc.textContent = `0${cur + 1}/0${N}`;
   pb.style.width = ((cur + 1) / N * 100) + '%';
-  
-  // Toggle nav dark mode text based on slide class
   if(slides[cur].classList.contains('dark-mode')) {
     nav.classList.add('dark-mode-nav');
   } else {
@@ -567,7 +431,6 @@ document.addEventListener('touchend', e => {
 });
 pb.style.width = (1 / N * 100) + '%';
 
-/* ── HERO ORBIT ── */
 const orbit = document.getElementById('orbitGroup');
 let angle = 0;
 function animateOrbit() {
@@ -577,12 +440,10 @@ function animateOrbit() {
 }
 animateOrbit();
 
-/* ── CLINICAL SIMULATION CANVAS ── */
 (function() {
   const canvas = document.getElementById('simCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  
   const LW = 1000, LH = 560;
   const HALL = { x: 50, y: 190, w: 900, h: 100 };
   const ROOMS = [
@@ -590,288 +451,94 @@ animateOrbit();
     { id: 'ambient', x: 390, y: 290, w: 220, h: 230, doorX: 460, doorW: 90, label: 'SECTOR B (SMOKE)', temp: '124°F' },
     { id: 'hazard', x: 700, y: 290, w: 220, h: 230, doorX: 770, doorW: 90, label: 'SECTOR C (HAZARD)', temp: '145°F' },
   ];
-
-  // Minimalist Palette
-  const C = {
-    bg: '#FFFFFF',
-    line: '#000000',
-    grid: '#E5E5E5',
-    u1: '#000000',
-    u2: '#FFFFFF',
-    blue: '#0055FF',
-    yellow: '#FFB800',
-    orange: '#FF3300'
-  };
-
-  const PATH1 = [
-    {x:50, y:240,r:'hallway'}, {x:195,y:240,r:'hallway'}, {x:195,y:310,r:'dark'},
-    {x:140,y:390,r:'dark'}, {x:190,y:460,r:'dark'}, {x:195,y:310,r:'dark'},
-    {x:195,y:240,r:'hallway'}, {x:505,y:240,r:'hallway'}, {x:505,y:310,r:'ambient'},
-    {x:460,y:410,r:'ambient'}, {x:500,y:470,r:'ambient'}, {x:505,y:310,r:'ambient'},
-    {x:505,y:240,r:'hallway'}, {x:50,y:240,r:'hallway'}
-  ];
-  
-  const PATH2 = [
-    {x:50, y:240,r:'hallway'}, {x:505,y:240,r:'hallway'}, {x:810,y:240,r:'hallway'},
-    {x:810,y:310,r:'hazard'}, {x:870,y:370,r:'hazard'}, {x:880,y:460,r:'hazard'},
-    {x:850,y:500,r:'hazard'}, {x:810,y:350,r:'hazard'}, {x:810,y:240,r:'hallway'},
-    {x:50,y:240,r:'hallway'}
-  ];
-
-  const PATH3 = [
-    {x:50, y:240,r:'hallway'}, {x:810,y:240,r:'hallway'}, {x:810,y:310,r:'hazard'},
-    {x:740,y:360,r:'hazard'}, {x:720,y:440,r:'hazard'}, {x:750,y:490,r:'hazard'},
-    {x:810,y:360,r:'hazard'}, {x:810,y:240,r:'hallway'}, {x:50,y:240,r:'hallway'}
-  ];
-
+  const C = { bg: '#FFFFFF', line: '#000000', grid: '#E5E5E5', u1: '#000000', u2: '#FFFFFF', blue: '#0055FF', yellow: '#FFB800', orange: '#FF3300' };
+  const PATH1 = [ {x:50, y:240,r:'hallway'}, {x:195,y:240,r:'hallway'}, {x:195,y:310,r:'dark'}, {x:140,y:390,r:'dark'}, {x:190,y:460,r:'dark'}, {x:195,y:310,r:'dark'}, {x:195,y:240,r:'hallway'}, {x:505,y:240,r:'hallway'}, {x:505,y:310,r:'ambient'}, {x:460,y:410,r:'ambient'}, {x:500,y:470,r:'ambient'}, {x:505,y:310,r:'ambient'}, {x:505,y:240,r:'hallway'}, {x:50,y:240,r:'hallway'} ];
+  const PATH2 = [ {x:50, y:240,r:'hallway'}, {x:505,y:240,r:'hallway'}, {x:810,y:240,r:'hallway'}, {x:810,y:310,r:'hazard'}, {x:870,y:370,r:'hazard'}, {x:880,y:460,r:'hazard'}, {x:850,y:500,r:'hazard'}, {x:810,y:350,r:'hazard'}, {x:810,y:240,r:'hallway'}, {x:50,y:240,r:'hallway'} ];
+  const PATH3 = [ {x:50, y:240,r:'hallway'}, {x:810,y:240,r:'hallway'}, {x:810,y:310,r:'hazard'}, {x:740,y:360,r:'hazard'}, {x:720,y:440,r:'hazard'}, {x:750,y:490,r:'hazard'}, {x:810,y:360,r:'hazard'}, {x:810,y:240,r:'hallway'}, {x:50,y:240,r:'hallway'} ];
   const SPD = { u1: 0.008, u2: 0.010, u3: 0.012 };
   let state = resetState();
-
-  function resetState() {
-    return {
-      u1seg:0, u1t:0, u1pos:{x:50,y:240,r:'hallway'}, u1trail:[], u1done:false, u1active:true,
-      u2seg:0, u2t:0, u2pos:null, u2trail:[], u2done:false, u2active:false, u2deployed:false,
-      u3seg:0, u3t:0, u3pos:null, u3trail:[], u3done:false, u3active:false, u3deployed:false,
-      v1rescued: false, v2rescued: false,
-      allDone:false, pauseTimer:0,
-      discoveredRooms: {},
-    };
-  }
-
+  function resetState() { return { u1seg:0, u1t:0, u1pos:{x:50,y:240,r:'hallway'}, u1trail:[], u1done:false, u1active:true, u2seg:0, u2t:0, u2pos:null, u2trail:[], u2done:false, u2active:false, u2deployed:false, u3seg:0, u3t:0, u3pos:null, u3trail:[], u3done:false, u3active:false, u3deployed:false, v1rescued: false, v2rescued: false, allDone:false, pauseTimer:0, discoveredRooms: {}, }; }
   function lerp(a,b,t) { return { x: a.x+(b.x-a.x)*t, y: a.y+(b.y-a.y)*t, r: t<0.5?a.r:b.r }; }
-  
   function advanceUnit(path, seg, t, spd, trailArr) {
     t += spd;
-    if(t >= 1) {
-      t = 0; seg++;
-      if(seg >= path.length-1) { seg = path.length-2; t = 1; return {seg, t, pos: lerp(path[seg], path[seg+1], t), done: true}; }
-    }
+    if(t >= 1) { t = 0; seg++; if(seg >= path.length-1) { seg = path.length-2; t = 1; return {seg, t, pos: lerp(path[seg], path[seg+1], t), done: true}; } }
     const pos = lerp(path[seg], path[seg+1], t);
-    if(trailArr.length === 0 || Math.hypot(trailArr[trailArr.length-1].x - pos.x, trailArr[trailArr.length-1].y - pos.y) > 5) {
-      trailArr.push({x: pos.x, y: pos.y, r: pos.r});
-    }
+    if(trailArr.length === 0 || Math.hypot(trailArr[trailArr.length-1].x - pos.x, trailArr[trailArr.length-1].y - pos.y) > 5) { trailArr.push({x: pos.x, y: pos.y, r: pos.r}); }
     return {seg, t, pos, done: false};
   }
-
-  function getTrailColor(r) {
-    if(r==='ambient') return C.yellow;
-    if(r==='hazard') return C.orange;
-    return C.blue;
-  }
-
-  function resize() {
-    const el = canvas.parentElement;
-    canvas.width = el.clientWidth;
-    canvas.height = el.clientHeight;
-  }
+  function getTrailColor(r) { if(r==='ambient') return C.yellow; if(r==='hazard') return C.orange; return C.blue; }
+  function resize() { canvas.width = canvas.parentElement.clientWidth; canvas.height = canvas.parentElement.clientHeight; }
   resize(); window.addEventListener('resize', resize);
-
   function ts(lx,ly) {
     let sc = Math.min(canvas.width/LW, canvas.height/LH) * 0.85;
-    
-    // CAP THE MAX ZOOM FOR LARGE 27" SCREENS
-    const maxScale = 1.4;
-    sc = Math.min(sc, maxScale);
-    
+    sc = Math.min(sc, 1.4);
     const ox = (canvas.width - LW*sc)/2, oy = (canvas.height - LH*sc)/2;
     return { x: ox + lx*sc, y: oy + ly*sc, sc };
   }
-
-  function drawGrid(sc) {
+  function drawBuilding() {
+    const {sc} = ts(0,0);
+    ctx.fillStyle = C.bg; ctx.fillRect(0,0,canvas.width,canvas.height);
     ctx.strokeStyle = C.grid; ctx.lineWidth = 1;
     const size = 50 * sc;
     for(let x=0; x<canvas.width; x+=size) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,canvas.height); ctx.stroke(); }
     for(let y=0; y<canvas.height; y+=size) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke(); }
-  }
-
-  function drawBuilding() {
-    const {sc} = ts(0,0);
-    ctx.fillStyle = C.bg; ctx.fillRect(0,0,canvas.width,canvas.height);
-    drawGrid(sc);
-
     const h = ts(HALL.x, HALL.y);
     ctx.strokeStyle = C.line; ctx.lineWidth = 2;
     ctx.strokeRect(h.x, h.y, HALL.w*sc, HALL.h*sc);
-
     ROOMS.forEach(r => {
-      const rs = ts(r.x, r.y);
-      const rw = r.w*sc, rh = r.h*sc;
-      const ds = ts(r.doorX, r.y);
-      
-      if(r.id === 'dark') {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-        ctx.fillRect(rs.x, rs.y, rw, rh);
-      } else if (r.id === 'ambient') {
-        ctx.fillStyle = 'rgba(255, 184, 0, 0.1)';
-        ctx.fillRect(rs.x, rs.y, rw, rh);
-      } else if (r.id === 'hazard') {
-        ctx.fillStyle = 'rgba(255, 51, 0, 0.1)';
-        ctx.fillRect(rs.x, rs.y, rw, rh);
-      }
-
-      ctx.strokeStyle = r.id === 'hazard' ? C.orange : (r.id === 'ambient' ? C.yellow : C.line); 
-      ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.moveTo(rs.x, rs.y); ctx.lineTo(ds.x, rs.y); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(ds.x + r.doorW*sc, rs.y); ctx.lineTo(rs.x+rw, rs.y); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(rs.x, rs.y); ctx.lineTo(rs.x, rs.y+rh); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(rs.x+rw, rs.y); ctx.lineTo(rs.x+rw, rs.y+rh); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(rs.x, rs.y+rh); ctx.lineTo(rs.x+rw, rs.y+rh); ctx.stroke();
-
+      const rs = ts(r.x, r.y); const rw = r.w*sc, rh = r.h*sc; const ds = ts(r.doorX, r.y);
+      if(r.id === 'dark') { ctx.fillStyle = 'rgba(0, 0, 0, 0.8)'; ctx.fillRect(rs.x, rs.y, rw, rh); }
+      else if (r.id === 'ambient') { ctx.fillStyle = 'rgba(255, 184, 0, 0.1)'; ctx.fillRect(rs.x, rs.y, rw, rh); }
+      else if (r.id === 'hazard') { ctx.fillStyle = 'rgba(255, 51, 0, 0.1)'; ctx.fillRect(rs.x, rs.y, rw, rh); }
+      ctx.strokeStyle = r.id === 'hazard' ? C.orange : (r.id === 'ambient' ? C.yellow : C.line); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(rs.x, rs.y); ctx.lineTo(ds.x, rs.y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(ds.x + r.doorW*sc, rs.y); ctx.lineTo(rs.x+rw, rs.y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(rs.x, rs.y); ctx.lineTo(rs.x, rs.y+rh); ctx.stroke(); ctx.beginPath(); ctx.moveTo(rs.x+rw, rs.y); ctx.lineTo(rs.x+rw, rs.y+rh); ctx.stroke(); ctx.beginPath(); ctx.moveTo(rs.x, rs.y+rh); ctx.lineTo(rs.x+rw, rs.y+rh); ctx.stroke();
       ctx.fillStyle = r.id === 'dark' ? C.bg : (r.id === 'hazard' ? C.orange : (r.id === 'ambient' ? C.yellow : C.line));
-      ctx.font = `500 ${Math.max(10*sc, 8)}px var(--font)`;
-      ctx.letterSpacing = '0.1em';
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'alphabetic';
-      ctx.fillText(r.label, rs.x + 12*sc, rs.y + rh - 16*sc);
-
-      // Post the temperature in front of the room once discovered
-      if (state.discoveredRooms[r.id]) {
-        ctx.fillStyle = r.id === 'hazard' ? C.orange : (r.id === 'ambient' ? C.yellow : C.line);
-        ctx.font = `bold ${Math.max(12*sc, 9)}px var(--font)`;
-        ctx.fillText(`TEMP: ${r.temp}`, ds.x + 10*sc, rs.y - 10*sc);
-      }
+      ctx.font = `500 ${Math.max(10*sc, 8)}px var(--font)`; ctx.letterSpacing = '0.1em'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.fillText(r.label, rs.x + 12*sc, rs.y + rh - 16*sc);
+      if (state.discoveredRooms[r.id]) { ctx.fillStyle = r.id === 'hazard' ? C.orange : (r.id === 'ambient' ? C.yellow : C.line); ctx.font = `bold ${Math.max(12*sc, 9)}px var(--font)`; ctx.fillText(`TEMP: ${r.temp}`, ds.x + 10*sc, rs.y - 10*sc); }
     });
   }
-
   function drawTrail(trail) {
     if(trail.length < 2) return;
-    const {sc} = ts(0,0);
-    ctx.lineWidth = 2;
-    ctx.setLineDash([]);
-    
+    ctx.lineWidth = 2; ctx.setLineDash([]);
     for(let i=0; i<trail.length; i++) {
-      const p = ts(trail[i].x, trail[i].y);
-      ctx.strokeStyle = getTrailColor(trail[i].r);
-      
-      if(i===0) {
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-      } else {
-        ctx.lineTo(p.x, p.y);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-      }
+      const p = ts(trail[i].x, trail[i].y); ctx.strokeStyle = getTrailColor(trail[i].r);
+      if(i===0) { ctx.beginPath(); ctx.moveTo(p.x, p.y); } else { ctx.lineTo(p.x, p.y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(p.x, p.y); }
     }
   }
-
   function drawUnit(lx, ly, type, label) {
     if(lx === null || lx === undefined) return;
-    const s = ts(lx, ly); const {sc} = ts(0,0);
-    ctx.beginPath(); ctx.arc(s.x, s.y, 6*sc, 0, Math.PI*2);
-    
-    if(type === 'u1') {
-      ctx.fillStyle = C.line; ctx.fill();
-    } else {
-      ctx.fillStyle = C.bg; ctx.fill();
-      ctx.lineWidth = 2; ctx.strokeStyle = C.line; ctx.stroke();
-    }
-
-    if (label) {
-      ctx.fillStyle = C.line;
-      ctx.font = `600 ${Math.max(10*sc, 8)}px var(--font)`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'bottom';
-      ctx.fillText(label, s.x, s.y - 10*sc);
-    }
+    const s = ts(lx, ly); const {sc} = ts(0,0); ctx.beginPath(); ctx.arc(s.x, s.y, 6*sc, 0, Math.PI*2);
+    if(type === 'u1') { ctx.fillStyle = C.line; ctx.fill(); } else { ctx.fillStyle = C.bg; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = C.line; ctx.stroke(); }
+    if (label) { ctx.fillStyle = C.line; ctx.font = `600 ${Math.max(10*sc, 8)}px var(--font)`; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom'; ctx.fillText(label, s.x, s.y - 10*sc); }
   }
-
   function drawVictim(lx, ly) {
-    if (Math.floor(Date.now() / 300) % 2 === 0) {
-      const {x, y, sc} = ts(lx, ly);
-      ctx.fillStyle = C.orange;
-      ctx.font = `bold ${Math.max(16*sc, 12)}px var(--font)`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('X', x, y);
-    }
+    if (Math.floor(Date.now() / 300) % 2 === 0) { const {x, y, sc} = ts(lx, ly); ctx.fillStyle = C.orange; ctx.font = `bold ${Math.max(16*sc, 12)}px var(--font)`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('X', x, y); }
   }
-
   function frame() {
     const S = state;
-    if(S.allDone) {
-      S.pauseTimer--;
-      if(S.pauseTimer <= 0) state = resetState();
-    } else {
-      if(S.u1active && !S.u1done) {
-        const res = advanceUnit(PATH1, S.u1seg, S.u1t, SPD.u1, S.u1trail);
-        S.u1seg = res.seg; S.u1t = res.t; S.u1pos = res.pos;
-        if(res.done) S.u1done = true;
-        
-        if(S.u1seg >= 10) S.v1rescued = true; // grabbed V1
-        if(!S.u2deployed && S.u1seg >= 12) { // Exiting Sector B
-          S.u2deployed = true; S.u2active = true; S.u2pos = {x:50,y:240,r:'hallway'};
-        }
-      }
-      if(S.u2active && !S.u2done) {
-        const res = advanceUnit(PATH2, S.u2seg, S.u2t, SPD.u2, S.u2trail);
-        S.u2seg = res.seg; S.u2t = res.t; S.u2pos = res.pos;
-        if(res.done) S.u2done = true;
-
-        if(S.u2seg >= 6) S.v2rescued = true; // grabbed V2
-        if(!S.u3deployed && S.u2seg >= 3) { // Entering Sector C
-          S.u3deployed = true; S.u3active = true; S.u3pos = {x:50,y:240,r:'hallway'};
-        }
-      }
-      if(S.u3active && !S.u3done) {
-        const res = advanceUnit(PATH3, S.u3seg, S.u3t, SPD.u3, S.u3trail);
-        S.u3seg = res.seg; S.u3t = res.t; S.u3pos = res.pos;
-        if(res.done) S.u3done = true;
-      }
-
-      if(S.u1done && S.u2done && (!S.u3active || S.u3done)) {
-        S.allDone = true; S.pauseTimer = 180;
-      }
+    if(S.allDone) { S.pauseTimer--; if(S.pauseTimer <= 0) state = resetState(); } else {
+      if(S.u1active && !S.u1done) { const res = advanceUnit(PATH1, S.u1seg, S.u1t, SPD.u1, S.u1trail); S.u1seg = res.seg; S.u1t = res.t; S.u1pos = res.pos; if(res.done) S.u1done = true; if(S.u1seg >= 10) S.v1rescued = true; if(!S.u2deployed && S.u1seg >= 12) { S.u2deployed = true; S.u2active = true; S.u2pos = {x:50,y:240,r:'hallway'}; } }
+      if(S.u2active && !S.u2done) { const res = advanceUnit(PATH2, S.u2seg, S.u2t, SPD.u2, S.u2trail); S.u2seg = res.seg; S.u2t = res.t; S.u2pos = res.pos; if(res.done) S.u2done = true; if(S.u2seg >= 6) S.v2rescued = true; if(!S.u3deployed && S.u2seg >= 3) { S.u3deployed = true; S.u3active = true; S.u3pos = {x:50,y:240,r:'hallway'}; } }
+      if(S.u3active && !S.u3done) { const res = advanceUnit(PATH3, S.u3seg, S.u3t, SPD.u3, S.u3trail); S.u3seg = res.seg; S.u3t = res.t; S.u3pos = res.pos; if(res.done) S.u3done = true; }
+      if(S.u1done && S.u2done && (!S.u3active || S.u3done)) { S.allDone = true; S.pauseTimer = 180; }
     }
-
-    // Mark rooms as discovered if any active unit is inside
-    [S.u1pos, S.u2pos, S.u3pos].forEach(pos => {
-      if (pos && pos.r && pos.r !== 'hallway') {
-        S.discoveredRooms[pos.r] = true;
-      }
-    });
-
+    [S.u1pos, S.u2pos, S.u3pos].forEach(pos => { if (pos && pos.r && pos.r !== 'hallway') S.discoveredRooms[pos.r] = true; });
     let activeRoom = 'hallway';
-    if (!S.u1done && S.u1active) activeRoom = S.u1pos.r;
-    else if (!S.u2done && S.u2active) activeRoom = S.u2pos.r;
-    else if (!S.u3done && S.u3active) activeRoom = S.u3pos.r;
-
+    if (!S.u1done && S.u1active) activeRoom = S.u1pos.r; else if (!S.u2done && S.u2active) activeRoom = S.u2pos.r; else if (!S.u3done && S.u3active) activeRoom = S.u3pos.r;
     document.getElementById('hud-o').classList.toggle('active', activeRoom === 'hallway');
     document.getElementById('hud-e').classList.toggle('active', activeRoom === 'dark');
     document.getElementById('hud-t').classList.toggle('active', activeRoom === 'ambient' || activeRoom === 'hazard');
-
-    drawBuilding();
-    drawTrail(S.u1trail);
-    drawTrail(S.u2trail);
-    if(S.u3active) drawTrail(S.u3trail);
-
+    drawBuilding(); drawTrail(S.u1trail); drawTrail(S.u2trail); if(S.u3active) drawTrail(S.u3trail);
     if(!S.u1done && S.u1active) drawUnit(S.u1pos.x, S.u1pos.y, 'u1', 'U1');
     if(!S.u2done && S.u2active) drawUnit(S.u2pos.x, S.u2pos.y, 'u2', 'U2');
     if(!S.u3done && S.u3active) drawUnit(S.u3pos.x, S.u3pos.y, 'u2', 'U3');
-
-    // Draw Victims
-    if (!S.v1rescued) drawVictim(500, 470);
-    else if (!S.u1done) drawVictim(S.u1pos.x + 12, S.u1pos.y + 12);
-
-    if (!S.v2rescued) drawVictim(850, 500);
-    else if (!S.u2done) drawVictim(S.u2pos.x + 12, S.u2pos.y + 12);
-
-    // Draw Blinking AR Sync Indicator
-    let arText = '[ DEFAULT MODE ]';
-    let arColor = C.line;
+    if (!S.v1rescued) drawVictim(500, 470); else if (!S.u1done) drawVictim(S.u1pos.x + 12, S.u1pos.y + 12);
+    if (!S.v2rescued) drawVictim(850, 500); else if (!S.u2done) drawVictim(S.u2pos.x + 12, S.u2pos.y + 12);
+    let arText = '[ DEFAULT MODE ]', arColor = C.line;
     if (activeRoom === 'dark') { arText = '[ NIGHT VISION ACTIVATED ]'; arColor = C.line; }
     else if (activeRoom === 'ambient') { arText = '[ THERMAL: EXTREME HEAT DETECTED ]'; arColor = C.yellow; }
     else if (activeRoom === 'hazard') { arText = '[ THERMAL: HAZARD DETECTED ]'; arColor = C.orange; }
-    
-    if (Math.floor(Date.now() / 400) % 2 === 0) {
-      const {sc} = ts(0,0);
-      ctx.fillStyle = arColor;
-      ctx.font = `600 ${Math.max(12*sc, 10)}px var(--font)`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'top';
-      ctx.fillText(arText, canvas.width / 2, 20*sc);
-    }
-
+    if (Math.floor(Date.now() / 400) % 2 === 0) { const {sc} = ts(0,0); ctx.fillStyle = arColor; ctx.font = `600 ${Math.max(12*sc, 10)}px var(--font)`; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillText(arText, canvas.width / 2, 20*sc); }
     requestAnimationFrame(frame);
   }
   frame();
