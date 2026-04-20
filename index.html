@@ -26,14 +26,14 @@
   --mono: 'JetBrains Mono', 'SF Mono', monospace;
   
   /* Spacing Scale (SDL Rhythm) */
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-  --space-6: 48px;
-  --space-8: 64px;
-  --space-12: 96px;
-  --space-16: 128px;
+  --space-1: clamp(4px, 0.8vh, 8px);
+  --space-2: clamp(8px, 1.5vh, 16px);
+  --space-3: clamp(12px, 2.5vh, 24px);
+  --space-4: clamp(16px, 3.5vh, 32px);
+  --space-6: clamp(24px, 5vh, 48px);
+  --space-8: clamp(32px, 7vh, 64px);
+  --space-12: clamp(48px, 10vh, 96px);
+  --space-16: clamp(64px, 12vh, 128px);
   
   /* Layout */
   --pad: clamp(var(--space-3), 4vw, var(--space-8));
@@ -61,7 +61,7 @@ html, body {
   opacity: 0; pointer-events: none;
   display: grid; 
   grid-template-rows: auto 1fr auto;
-  padding-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
   transition: opacity .6s cubic-bezier(.2,.8,.2,1), transform .6s cubic-bezier(.2,.8,.2,1);
   transform: translateY(12px);
 }
@@ -82,7 +82,7 @@ html, body {
   border-bottom: 1px solid var(--hair); 
   color: var(--text-secondary); 
 }
-.rail.bot { border-bottom: 0; border-top: 1px solid var(--hair); }
+.rail.bot { border-bottom: 0; border-top: 1px solid var(--hair); padding-bottom: calc(var(--space-4) + 32px); }
 .rail .cell { display:flex; gap:var(--space-2); align-items:center; min-width:0; }
 .rail .cell .k { color: var(--text-secondary); }
 .rail .cell .v { color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -100,7 +100,7 @@ html, body {
   grid-template-columns: repeat(12, 1fr); 
   gap: var(--gap); 
   padding: var(--pad); 
-  padding-bottom: calc(var(--pad) + var(--space-4)); 
+  padding-bottom: var(--space-2); 
   min-height: 0; 
   align-content: start;
 }
@@ -445,6 +445,7 @@ html, body {
 }
 .portrait { 
   aspect-ratio: 3/4; 
+  max-height: 30vh;
   border:1px solid var(--hair); 
   position:relative; 
   display:flex; 
@@ -621,9 +622,8 @@ html, body {
   </div>
 
   <footer class="rail bot">
-    <div class="cell span4"><span class="k">FIG·01</span><span class="v">COVER / INDEX</span></div>
-    <div class="cell span4"><span class="k">STATUS</span><span class="v mk-fg">ENGINE PRODUCTION-GRADE</span></div>
-    <div class="cell span4 right"><span class="k">NEXT</span><span class="v">02 — THE REALITY</span></div>
+    <div class="cell span6"><span class="k">STATUS</span><span class="v mk-fg">ENGINE PRODUCTION-GRADE</span></div>
+    <div class="cell span6 right"><span class="k">NEXT</span><span class="v">02 — THE REALITY</span></div>
   </footer>
 </section>
 
@@ -690,9 +690,8 @@ html, body {
   </div>
 
   <footer class="rail bot">
-    <div class="cell span4"><span class="k">LOSS</span><span class="v">HAND · EYES · PACE</span></div>
-    <div class="cell span4"><span class="k">RESULT</span><span class="v">HALT CADENCE / LOST SA</span></div>
-    <div class="cell span4 right"><span class="k">NEXT</span><span class="v">03 — SCHEMATIC</span></div>
+    <div class="cell span6"><span class="k">RESULT</span><span class="v">HALT CADENCE / LOST SA</span></div>
+    <div class="cell span6 right"><span class="k">NEXT</span><span class="v">03 — SCHEMATIC</span></div>
   </footer>
 </section>
 
@@ -741,9 +740,8 @@ html, body {
   </div>
 
   <footer class="rail bot">
-    <div class="cell span4"><span class="k">STACK</span><span class="v">OPTICAL + NIR + LWIR + IMU</span></div>
-    <div class="cell span4"><span class="k">LATENCY</span><span class="v">&lt; 40 MS VISOR·TO·EYE</span></div>
-    <div class="cell span4 right"><span class="k">NEXT</span><span class="v">04 — ROADMAP</span></div>
+    <div class="cell span6"><span class="k">LATENCY</span><span class="v">&lt; 40 MS VISOR·TO·EYE</span></div>
+    <div class="cell span6 right"><span class="k">NEXT</span><span class="v">04 — ROADMAP</span></div>
   </footer>
 </section>
 
@@ -823,9 +821,8 @@ html, body {
   </div>
 
   <footer class="rail bot">
-    <div class="cell span4"><span class="k">COMPLETE</span><span class="v">P·01 / P·02 / P·03</span></div>
-    <div class="cell span4"><span class="k">ACTIVE</span><span class="v mk-fg">P·04 HARDWARE</span></div>
-    <div class="cell span4 right"><span class="k">NEXT</span><span class="v">05 — MARKET</span></div>
+    <div class="cell span6"><span class="k">ACTIVE</span><span class="v mk-fg">P·04 HARDWARE</span></div>
+    <div class="cell span6 right"><span class="k">NEXT</span><span class="v">05 — MARKET</span></div>
   </footer>
 </section>
 
@@ -886,9 +883,8 @@ html, body {
   </div>
 
   <footer class="rail bot">
-    <div class="cell span4"><span class="k">PRIMARY</span><span class="v mk-fg">DEPT OF DEFENSE</span></div>
-    <div class="cell span4"><span class="k">SECONDARY</span><span class="v">MUNICIPAL FIRE / EMS</span></div>
-    <div class="cell span4 right"><span class="k">NEXT</span><span class="v">06 — TEAM</span></div>
+    <div class="cell span6"><span class="k">PRIMARY</span><span class="v mk-fg">DEPT OF DEFENSE</span></div>
+    <div class="cell span6 right"><span class="k">NEXT</span><span class="v">06 — TEAM</span></div>
   </footer>
 </section>
 
@@ -964,9 +960,8 @@ html, body {
   </div>
 
   <footer class="rail bot">
-    <div class="cell span4"></div>
-    <div class="cell span4"></div>
-    <div class="cell span4 right"><span class="k">NEXT</span><span class="v">07 — THE ASK</span></div>
+    <div class="cell span6"></div>
+    <div class="cell span6 right"><span class="k">NEXT</span><span class="v">07 — THE ASK</span></div>
   </footer>
 </section>
 
@@ -1016,9 +1011,8 @@ html, body {
   </div>
 
   <footer class="rail bot">
-    <div class="cell span4"></div>
-    <div class="cell span4"><span class="k">ROUND</span><span class="v">PRE-SEED · $750K</span></div>
-    <div class="cell span4 right"><span class="k">FIN.</span><span class="v">08 / 08</span></div>
+    <div class="cell span6"><span class="k">MILESTONE</span><span class="v">DoD PILOT · LIVE-FIRE TRIAL</span></div>
+    <div class="cell span6 right"><span class="k">NEXT</span><span class="v">08 — CONTACT</span></div>
   </footer>
 </section>
 
@@ -1069,9 +1063,8 @@ html, body {
   </div>
 
   <footer class="rail bot">
-    <div class="cell span4"></div>
-    <div class="cell span4"><span class="k">ROUND</span><span class="v">PRE-SEED · $750K</span></div>
-    <div class="cell span4 right"><span class="k">FIN.</span><span class="v">08 / 08</span></div>
+    <div class="cell span6"></div>
+    <div class="cell span6 right"><span class="k">FIN.</span><span class="v">08 / 08</span></div>
   </footer>
 </section>
 
@@ -1374,6 +1367,37 @@ document.addEventListener('touchend', e => { const d = e.changedTouches[0].clien
       }
     });
 
+    // Extraction Vehicle
+    const vehW = 60*sc, vehH = 80*sc;
+    const vehX = ts(-60, 200).x;
+    const vehY = ts(-60, 200).y;
+    
+    ctx.strokeStyle = C.textSec;
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([2, 2]);
+    ctx.strokeRect(vehX, vehY, vehW, vehH);
+    ctx.setLineDash([]);
+    
+    let vColor = C.red;
+    if(currentHudMode === 'NIGHT') vColor = C.blue;
+    if(currentHudMode === 'OPTICAL') vColor = C.text;
+    
+    ctx.fillStyle = vColor;
+    ctx.globalAlpha = 0.08;
+    ctx.fillRect(vehX, vehY, vehW, vehH);
+    ctx.globalAlpha = 1.0;
+    
+    ctx.fillStyle = vColor;
+    ctx.font = `600 ${10*sc}px JetBrains Mono`;
+    ctx.textAlign = 'center'; 
+    ctx.textBaseline = 'middle';
+    
+    ctx.save();
+    ctx.translate(vehX + vehW/2, vehY + vehH/2);
+    ctx.rotate(-Math.PI/2);
+    ctx.fillText('EVAC', 0, 0);
+    ctx.restore();
+
     // Draw Trails
     const drawTrail = (trail, colorFn) => {
       if (trail.length < 2) return;
@@ -1391,8 +1415,8 @@ document.addEventListener('touchend', e => { const d = e.changedTouches[0].clien
       ctx.setLineDash([]);
     };
     drawTrail(S.trail1, (r) => r === 'hallway' ? C.blue : C.nvg);
-    drawTrail(S.trail2, () => C.red);
-    drawTrail(S.trail3, () => C.red);
+    drawTrail(S.trail2, (r) => r === 'hallway' ? C.blue : C.red);
+    drawTrail(S.trail3, (r) => r === 'hallway' ? C.blue : C.red);
 
     // Draw Operators and their carried victims
     const drawOp = (p, label, isThermal, hasVictim) => {
